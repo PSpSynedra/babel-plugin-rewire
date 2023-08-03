@@ -20,6 +20,7 @@ module.exports = function({ types: t, template }) {
 		let { node, parent } = path;
 
 		return (variableBinding.referencePaths !== null) &&
+		!(parent.type === 'PrivateName') &&
 		!(parent.type === 'VariableDeclarator' && parent.id == node) &&
 		!(parent.type === 'ForInStatement' && parent.left == node) &&
 		!(parent.type === 'FunctionExpression' && parent.id === node) &&
